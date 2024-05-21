@@ -1,0 +1,18 @@
+<%- include('../partials/header', { title: 'Dodaj nowy post' }) %>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Dodaj nowy post</h1>
+    <form action="/posts/add" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Tytuł:</label>
+            <input type="text" id="title" name="title" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Treść:</label>
+            <textarea id="content" name="content" required class="form-control" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

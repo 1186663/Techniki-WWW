@@ -1,0 +1,18 @@
+<%- include('../partials/header', { title: 'CatBox' }) %>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Profil Użytkownika</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informacje o koncie:</h5>
+            <p class="card-text"><strong>Pseudonim:</strong> <%= user.username %></p>
+            <p class="card-text"><strong>E-mail:</strong> <%= user.email %></p>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="/users/profile/edit" class="btn btn-primary me-2">Edytuj Profil</a>
+        <a href="/users/logout" class="btn btn-secondary">Wyloguj</a>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

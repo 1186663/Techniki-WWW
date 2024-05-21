@@ -1,0 +1,34 @@
+<%- include('../partials/header', { title: 'Lista Kotów' }) %>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Lista Kotów</h1>
+    <% if (query.deleted === 'true') { %>
+        <div class="alert alert-success" role="alert">
+            Kot został pomyślnie usunięty.
+        </div>
+    <% } %>
+    <% if (cats.length > 0) { %>
+        <div class="row">
+            <% cats.forEach(cat => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= cat.name %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Wiek: <%= cat.age %></h6>
+                            <p class="card-text">Rasa: <%= cat.breed %></p>
+                            <p class="card-text">Kolor: <%= cat.color %></p>
+                            <form action="/cats/<%= cat.id %>/delete" method="post" onsubmit="return confirm('Czy na pewno chcesz usunąć tego kotka?');">
+                                <button class="btn btn-danger" type="submit">Usuń</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <a href="/cats/add" class="btn btn-primary">Dodaj nowego kota</a>
+    <% } else { %>
+        <p>Nie masz jeszcze żadnych kotów. <a href="/cats/add" class="btn btn-primary">Dodaj swojego pierwszego kota!</a></p>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

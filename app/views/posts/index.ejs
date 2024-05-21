@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: 'Posty' }) %>
+
+<div class="container mt-4 mb-5">
+    <h1 class="mb-4">Posty</h1>
+    <% if (query.deleted === 'true') { %>
+        <div class="alert alert-success">Post został usunięty.</div>
+    <% } %>
+    <% if (query.deleted === 'false') { %>
+        <div class="alert alert-danger">Ojej! Dlaczego chcesz usunąć post innego użytkownika?</div>
+    <% } %>
+    <% if (user) { %>
+        <a href="/posts/add" class="btn btn-primary mb-3">Dodaj nowy post</a>
+    <% } %>
+    <% if (posts.length > 0) { %>
+        <% posts.forEach(post => { %>
+            <div class="card mb-3 mb-5">
+                <div class="card-body">
+                    <h5 class="card-title"><%= post.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Autor: <%= post.username %>, Data: <%= post.created_at.toISOString().slice(0, 19).replace('T', ' ') %></h6>
+                    <p class="card-text"><%= post.content %></p>
+                    <% if (user && user.id === posts.user_id) { %>
+                        <form action="/posts/<%= post.id %>/delete" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Usuń</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>Brak postów do wyświetlenia.</p>
+    <% } %>
+</div>
+<div class="container mt-4 mb-5"> <hr class="my-4"></div>
+
+<%- include('../partials/footer') %>

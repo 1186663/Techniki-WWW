@@ -1,0 +1,46 @@
+<%- include('../partials/header', { title: 'Kalkulator Składu Karmy' }) %>
+
+<div class="container mt-4 mb-5">
+    <div class="row">
+
+        <div class="col-md-6 py-5 text-center">
+            <h1 class="mb-4">O Kalkulatorze Składu Karmy</h1>
+            <p class="py-3 px-5">Użyj tego narzędzia, aby obliczyć składniki odżywcze w suchej masie karmy dla Twojego pupila. Dzięki temu dowiesz się, jakie są rzeczywiste proporcje białka, tłuszczu, węglowodanów oraz fosforu, co jest kluczowe dla zdrowia Twojego zwierzaka.</p>
+            <p class="px-5">Wprowadź dane analityczne karmy, a kalkulator obliczy dla Ciebie wszystkie niezbędne wartości. Pamiętaj, że dokładność danych wpływa na dokładność wyników.</p>
+        </div>
+        
+        <div class="col-md-5">
+            <h2 class="mb-4">Kalkulator</h2>
+            <form id="formularzKarmy">
+                <div class="mb-3">
+                    <label for="bialko" class="form-label">Białko:</label>
+                    <input type="number" id="bialko" required class="form-control" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label for="tluszcz" class="form-label">Tłuszcz:</label>
+                    <input type="number" id="tluszcz" required class="form-control" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label for="popiol" class="form-label">Popiół surowy:</label>
+                    <input type="number" id="popiol" required class="form-control" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label for="wlokno" class="form-label">Włókno surowe:</label>
+                    <input type="number" id="wlokno" required class="form-control" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label for="wilgotnosc" class="form-label">Wilgotność:</label>
+                    <input type="number" id="wilgotnosc" required class="form-control" step="0.01">
+                </div>
+                <div class="mb-3">
+                    <label for="fosfor" class="form-label">Fosfor:</label>
+                    <input type="number" id="fosfor" required class="form-control" step="0.01">
+                </div>
+                <button type="submit" class="btn btn-primary">Oblicz</button>
+            </form>
+            <div id="wynikiContainer" class="mt-3 mb-5 text-center"></div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

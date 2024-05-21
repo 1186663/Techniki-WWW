@@ -1,0 +1,28 @@
+<%- include('../partials/header', {title: 'Login'}) %>
+
+<div class="container mt-5">
+    <% if (query.loggedOut) { %>
+        <div class="alert alert-success" role="alert">
+            Pomyślnie wylogowano.
+        </div>
+    <% } %>
+    <h1 class="mb-4">Login</h1>
+    <% if (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <form action="/users/login" method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="email" id="email" name="email" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Hasło:</label>
+            <input type="password" id="password" name="password" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Zaloguj</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
